@@ -9,9 +9,9 @@ public class C_Project {
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		long startTime;
 		long endTime;
-		System.out.println("Enter the number of Random num: ");
+		System.out.println("Enter the range of the list: ");
 		int RanNum = in.nextInt();
-		System.out.println("Set range for random number: ");
+		System.out.println("Set range for numbers: ");
 		int range = in.nextInt();
 		startTime = System.nanoTime();
 		for(int i = 0; i < RanNum; i++)
@@ -62,14 +62,13 @@ public class C_Project {
 				System.out.println((endTime - startTime)/1000000000);
 				break;
 			case 5:
+				startTime = System.nanoTime();
+				InsertionSort(list);
+				endTime = System.nanoTime();
+				System.out.println("Took "+(endTime - startTime) + " ns");
+				System.out.println((endTime - startTime)/1000000000);
 				break;
-				
 			}
-		
-		
-		
-		
-			
 	}
 	
 	public static ArrayList<Integer> Oeder(ArrayList<Integer> list){
@@ -141,13 +140,17 @@ public class C_Project {
 		}
 		System.out.println(list);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public static void InsertionSort(ArrayList<Integer> list){
+		int pull;
+		for(int i = 1; i < list.size(); i++){
+			for(int j = i-1; j > 0; j--){
+				if(list.get(j) < list.get(j - 1)){
+					pull =list.get(j);
+					list.set(j, list.get(j - 1));
+					list.set(j-1, pull);
+				}
+			}
+		}
+		System.out.println(list);
+	}
 }
